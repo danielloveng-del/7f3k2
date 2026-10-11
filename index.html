@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تسجيل الدرافيل</title>
+<style>
+*{box-sizing:border-box}body{font-family:system-ui,Tahoma,sans-serif;margin:0;background:#f3f5f8;color:#1b2430}
+main{max-width:560px;margin:auto;padding:14px}h1{font-size:20px;margin:6px 0 14px}
+.card{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:0 1px 3px #0002}
+button,input,textarea{font:inherit}.f{margin-bottom:12px;position:relative}.f>label,.g>b{display:block;font-weight:600;margin-bottom:5px}
+input[type=text],input[type=number],textarea{width:100%;padding:11px;border:1px solid #b8c2cf;border-radius:8px;background:#fff}
+.big{display:block;width:100%;padding:15px;margin-bottom:9px;border:0;border-radius:10px;background:#1f4e78;color:#fff;font-size:17px}
+.big.alt{background:#e6ebf1;color:#1f4e78}.big.warn{background:#b3261e}.row{display:flex;gap:8px}.row>*{flex:1}
+.sug button{display:inline-block;margin:5px 0 0 5px;padding:8px 12px;border:1px solid #1f4e78;border-radius:18px;background:#fff;color:#1f4e78}
+.opt{display:block;padding:11px;border:2px solid #d3dae3;border-radius:9px;margin-bottom:7px;background:#fff}
+.opt input{margin-left:8px}.opt.on{border-color:#1f4e78;background:#e8f0f8}.opt small{display:block;color:#667}
+.bad{color:#b3261e;font-weight:600}.hint{color:#667;font-size:13px}.ok{text-align:center;padding:30px 10px}
+</style></head><body><main id="app"></main>
+<script>
+const ENDPOINT=""; // ← الصق هنا رابط Apps Script (انظر README)
+const DATA={"blocks":[{"rb":null,"st":"ST1","sets":[]},{"rb":null,"st":"ST2","sets":[]},{"rb":null,"st":"ST3","sets":[]},{"rb":null,"st":"ST4","sets":[]},{"rb":null,"st":"ST5","sets":[]},{"rb":null,"st":"ST6","sets":[]},{"rb":null,"st":"ST7","sets":[]},{"rb":"RB8","st":"ST8","sets":[{"n":"1","a":"56979","b":"56978","d":403.8,"c":""},{"n":"2","a":"52207","b":"52206","d":429.3,"c":""}]},{"rb":"RB8","st":"ST9","sets":[{"n":"1","a":"87001","b":"87005","d":303.5,"c":""},{"n":"2","a":"52250","b":"52251","d":285.4,"c":""},{"n":"3","a":"124-45","b":"124-49","d":302.7,"c":""}]},{"rb":"RB8","st":"ST10","sets":[{"n":"1","a":"52245","b":"52246","d":317,"c":""},{"n":"2","a":"57004","b":"","d":305.6,"c":""}]},{"rb":"RB8","st":"ST11","sets":[{"n":"1","a":"SS-52306","b":"SS-52307","d":313.1,"c":""}]},{"rb":"RB8","st":"ST12","sets":[{"n":"1","a":"SS-52314","b":"SS-52313","d":314,"c":""},{"n":"2","a":"HISAR-86989","b":"HISAR-86984","d":319,"c":""}]},{"rb":"RB8","st":"ST13","sets":[{"n":"1","a":"SS-52316","b":"SS-52315","d":319.7,"c":""},{"n":"2","a":"SS-57139","b":"SS-57138","d":298.5,"c":""}]},{"rb":"RB8","st":"ST14","sets":[{"n":"1","a":"SS-52234","b":"SS-52235","d":315.1,"c":""},{"n":"2","a":"124-55","b":"124-39","d":320.8,"c":""}]},{"rb":"RB8","st":"ST15","sets":[{"n":"1","a":"SS-52352","b":"SS-52350","d":315.5,"c":""},{"n":"2","a":"SS-52346","b":"SS-52345","d":293.5,"c":""}]},{"rb":"RB8","st":"ST16","sets":[{"n":"1","a":"SS-52233","b":"SS-52232","d":311,"c":""},{"n":"2","a":"SS-57077","b":"SS-57076","d":308,"c":""},{"n":"3","a":"SS-52325","b":"SS-52326","d":301,"c":""}]},{"rb":"RB8","st":"ST17","sets":[{"n":"1","a":"HISAR-87023","b":"HISAR-87017","d":319,"c":""},{"n":"2","a":"SS-57078","b":"SS-57079","d":299,"c":""},{"n":"3","a":"SS-52351","b":"SS-52349","d":319,"c":""},{"n":"4","a":"SS-52327","b":"SS-52328","d":320,"c":""}]},{"rb":"RB8","st":"ST18","sets":[{"n":"1","a":"SS-52296","b":"SS-52299","d":309,"c":""},{"n":"2","a":"SS-52277","b":"SS-52276","d":319,"c":""},{"n":"3","a":"SS-52285","b":"SS-52303","d":314,"c":""},{"n":"4","a":"HISAR-87018","b":"HISAR-87042","d":291,"c":"مضروب"}]},{"rb":"RB10","st":"ST16","sets":[{"n":"1","a":"SS-52340","b":"SS-52339","d":315,"c":""},{"n":"2","a":"SS-52284","b":"SS-52287","d":312.15,"c":""},{"n":"3","a":"HISAR-87006","b":"HISAR-87039","d":313,"c":""}]},{"rb":"RB12","st":"ST8","sets":[{"n":"2","a":"124-21","b":"","d":430,"c":""}]},{"rb":"RB12","st":"ST11","sets":[{"n":"1","a":"87001","b":"87005","d":303.5,"c":""},{"n":"2","a":"52250","b":"52251","d":285.4,"c":""},{"n":"3","a":"124-45","b":"124-49","d":302.7,"c":""}]},{"rb":"RB12","st":"ST12","sets":[{"n":"1","a":"52286","b":"86982","d":313,"c":""},{"n":"2","a":"52293","b":"52292","d":319.55,"c":""},{"n":"3","a":"52308","b":"","d":297.4,"c":""}]},{"rb":"RB12","st":"ST13","sets":[{"n":"1","a":"52294","b":"52295","d":305.59,"c":""},{"n":"2","a":"52271","b":"52270","d":319.7,"c":""},{"n":"3","a":"","b":"124-31","d":293.2,"c":""}]},{"rb":"RB12","st":"ST14","sets":[{"n":"1","a":"HISAR-87036","b":"HISAR-87035","d":319.9,"c":""},{"n":"2","a":"57037","b":"57013","d":298.26,"c":""},{"n":"3","a":"HISAR-86958","b":"HISAR-86959","d":286.5,"c":""}]},{"rb":"RB12","st":"ST15","sets":[{"n":"1","a":"52291","b":"52290","d":290.55,"c":""},{"n":"2","a":"SS-52278","b":"SS-52279","d":319.42,"c":""},{"n":"3","a":"","b":"52249","d":305.67,"c":""}]},{"rb":"RB12","st":"ST16","sets":[{"n":"1","a":"52329","b":"52330","d":291.7,"c":""},{"n":"2","a":"86996","b":"87021","d":320,"c":""}]},{"rb":"RB12","st":"ST17","sets":[{"n":"1","a":"SS-52264","b":"SS-52265","d":307.4,"c":""},{"n":"2","a":"86983","b":"86888","d":310.7,"c":""},{"n":"3","a":"52283","b":"","d":291.45,"c":""}]},{"rb":"RB12","st":"ST18","sets":[{"n":"1","a":"SS-52275","b":"SS-52274","d":292,"c":""},{"n":"2","a":"SS-52269","b":"SS-52268","d":297.22,"c":""},{"n":"3","a":"HISAR-86986","b":"HISAR-86877","d":295.03,"c":""},{"n":"4","a":"87043","b":"","d":300,"c":""}]},{"rb":"RB14","st":"ST16","sets":[{"n":"1","a":"87040","b":"52353","d":319.67,"c":""},{"n":"2","a":"52302","b":"52300","d":294.57,"c":""},{"n":"3","a":"","b":"124-46","d":286.28,"c":""}]},{"rb":"RB16","st":"ST12","sets":[{"n":"1","a":"57110","b":"57111","d":297,"c":""},{"n":"2","a":"57086","b":"57087","d":320.4,"c":""}]},{"rb":"RB16","st":"ST15","sets":[{"n":"1","a":"57147","b":"57146","d":315,"c":""},{"n":"3","a":"57156","b":"57157","d":297.4,"c":"st15Rb18"},{"n":"4","a":"57066","b":"57067","d":305.6,"c":"st13Rb20"}]},{"rb":"RB16","st":"ST16","sets":[{"n":"1","a":"52272","b":"52273","d":319.7,"c":"st16rb18"},{"n":"2","a":"SS-52267","b":"SS-52266","d":315,"c":""},{"n":"3","a":"57155","b":"57161","d":296.5,"c":"st16rb18"},{"n":"4","a":"87011","b":"87036","d":291,"c":"st16rb18 st14rb20"}]},{"rb":"RB18","st":"ST15","sets":[{"n":"1","a":"57089","b":"57034","d":320.2,"c":""},{"n":"مشترك","a":"57156","b":"57157","d":297.4,"c":"st15rb16"}]},{"rb":"RB18","st":"ST16","sets":[{"n":"1","a":"57145","b":"57144","d":311.15,"c":""},{"n":"2","a":"52273","b":"52272","d":"","c":""},{"n":"مشترك","a":"57155","b":"57161","d":296.5,"c":"st16rb16"},{"n":"مشترك","a":"87011","b":"87036","d":291,"c":"st16rb16 st14rb20"}]},{"rb":"RB20","st":"ST13","sets":[{"n":"1","a":"SS-57119","b":"SS-57118","d":314.4,"c":""},{"n":"مشترك","a":"57066","b":"57067","d":305.6,"c":"st15rb16"}]},{"rb":"RB20","st":"ST14","sets":[{"n":"1","a":"SS-57117","b":"SS-57116","d":310,"c":""},{"n":"مشترك","a":"87011","b":"87036","d":291,"c":"st16rb16 st16rb18"},{"n":"مشترك","a":"SS-57055","b":"SS-57054","d":286,"c":"st12rb25"}]},{"rb":"RB25","st":"ST11","sets":[{"n":"1","a":"57011","b":"57010","d":309.5,"c":""}]},{"rb":"RB25","st":"ST12","sets":[{"n":"1","a":"SS-57022","b":"SS-57023","d":299,"c":""},{"n":"مشترك","a":"SS-57055","b":"SS-57054","d":286,"c":"st14rb20"}]},{"rb":"RB28","st":"ST11","sets":[{"n":"1","a":"124-53","b":"124-40","d":320,"c":""}]},{"rb":"RB28","st":"ST12","sets":[{"n":"1","a":"124-41","b":"124-54","d":320,"c":""}]},{"rb":"RB32","st":"ST11","sets":[{"n":"1","a":"SS-52247","b":"SS-52244","d":319,"c":""}]},{"rb":"RB32","st":"ST12","sets":[{"n":"1","a":"124-30","b":"124-29","d":311.5,"c":""}]}]};
+const $=s=>document.querySelector(s),app=$('#app');
+const L={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let KEY=L.get('key','');const S={shift:L.get('shift',''),eng:L.get('eng','')};let blocks=DATA.blocks,scrap=new Set();
+const num=s=>+((s||'').match(/\d+/)||[0])[0],norm=s=>String(s).toUpperCase().replace(/[\s\-_]/g,'');
+const uniq=a=>[...new Set(a)],stands=(L=blocks)=>uniq(L.map(b=>b.st)).sort((a,b)=>num(a)-num(b)),rbs=(L=blocks)=>uniq(L.map(b=>b.rb)).sort((a,b)=>num(a)-num(b));
+const setsOf=(st,rb)=>blocks.filter(b=>b.st===st&&b.rb===(num(st)<=7?'ALL':rb)).flatMap(b=>b.sets);
+const rbsFor=(st,L=blocks)=>num(st)<=7?rbs(L):uniq(L.filter(b=>b.st===st).map(b=>b.rb)).sort((a,b)=>num(a)-num(b));
+const stsFor=(rb,L=blocks)=>uniq(L.filter(b=>b.rb===rb||b.rb==='ALL').map(b=>b.st)).sort((a,b)=>num(a)-num(b));
+const lastSt=(rb,L=blocks)=>{const l=L.filter(b=>b.rb===rb).map(b=>b.st).sort((a,b)=>num(a)-num(b));return l[l.length-1]||''};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// ---- مكونات ----
+function picker(label,opts,val=''){const w=document.createElement('div');w.className='f';let pick=val;
+ w.innerHTML=`<label>${label}</label><input type=text autocomplete=off placeholder="ابحث ثم اضغط على الاقتراح" value="${esc(val)}"><div class=sug></div>`;
+ const i=w.querySelector('input'),s=w.querySelector('.sug'),O=()=>typeof opts==='function'?opts():opts;
+ w.get=()=>pick&&pick===i.value?pick:'';const mark=()=>{i.style.borderColor=w.get()?'#1e8e3e':'';i.style.background=w.get()?'#eef8f0':''};
+ w.set=v=>{pick=v;i.value=v;s.innerHTML='';mark()};
+ const show=()=>{s.innerHTML='';if(w.get())return;const q=norm(i.value);const l=O().filter(o=>!q||norm(o).includes(q));
+  if(!l.length)s.innerHTML='<span class=bad>لا توجد خيارات مطابقة</span>';
+  l.slice(0,8).forEach(o=>{const b=document.createElement('button');b.type='button';b.textContent=o;b.onclick=()=>{pick=o;i.value=o;s.innerHTML='';mark();w.onchange&&w.onchange()};s.append(b)})};
+ i.oninput=()=>{pick='';mark();show();w.onchange&&w.onchange()};i.onfocus=show;mark();return w}
+const inp=(l,n,t='text')=>`<div class=f><label>${l}</label><input type=${t==='n'?'number':'text'} ${t==='n'?'step=any inputmode=decimal':''} name=${n}></div>`;
+const radios=(l,n,o)=>`<div class=g><b>${l}</b>${o.map(x=>`<label class=opt><input type=radio name=${n} value="${x}">${x}</label>`).join('')}</div>`;
+const val=n=>{const els=[...document.querySelectorAll(`[name=${n}]`)];const e=els[0]&&els[0].type==='radio'?els.find(x=>x.checked):els[0];return e?e.value.trim():''};
+function setCards(box,list,cb){box.innerHTML=list.length?`<div class=g><b>اختر الطقم</b>`+list.map((s,i)=>{const sc=scrap.has(norm(s.a))||scrap.has(norm(s.b));
+ return `<label class=opt><input type=radio name=set value="${i}"><b>${esc(s.a||'؟')} / ${esc(s.b||'؟')}</b>${s.d?`<small>القطر الحالي: ${s.d}</small>`:''}${s.c?`<small>${esc(s.c)}</small>`:''}${sc?'<small class=bad>⚠ مسجّل سكراب</small>':''}</label>`}).join('')+'</div>':'<p class=bad>لا توجد أطقم مسجلة لهذا الستاند/المنتج.</p>';
+ box.onchange=()=>{box.querySelectorAll('.opt').forEach(o=>o.classList.toggle('on',o.querySelector('input').checked));cb&&cb()}}
+const pickedSet=list=>{const v=val('set');return v===''?null:list[+v]};
+// ---- الشاشات ----
+function home(){app.innerHTML=`<h1>تسجيل الدرافيل</h1><div class=card><div class=g><b>الواردية</b></div><div class=row><button class="big ${S.shift==='A'?'':'alt'}" data-s=A>A</button><button class="big ${S.shift==='B'?'':'alt'}" data-s=B>B</button></div>
+ ${inp('اسم المهندس','eng')}</div><button class=big data-o=new>1. طقم خام جديد</button><button class=big data-o=turn>2. خراطة</button><button class=big data-o=helix>3. حلزنة</button><button class="big warn" data-o=scrap>4. تسجيل طقم سكراب</button><p class=hint id=qn></p>`;
+ const e=$('[name=eng]');e.value=S.eng;e.oninput=()=>{S.eng=e.value;L.set('eng',S.eng)};
+ app.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{S.shift=b.dataset.s;L.set('shift',S.shift);home()});
+ app.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>{if(!S.shift||!S.eng.trim())return alert('اختر الواردية واكتب اسمك أولاً');form(b.dataset.o)});
+ const n=L.get('q',[]).length;$('#qn').textContent=n?`⚠ ${n} تسجيل لم يُرسل بعد (سيُعاد إرساله تلقائياً عند توفر الاتصال)`:''}
+function form(op){const T={new:'طقم خام جديد',turn:'خراطة',helix:'حلزنة',scrap:'تسجيل طقم سكراب'}[op];
+ app.innerHTML=`<h1>${T}</h1><form class=card id=fm><div id=pk></div><div id=sc></div><div id=rest></div><button class=big id=go type=submit>إرسال</button><button class="big alt" type=button id=bk>رجوع</button></form>`;
+ $('#bk').onclick=home;const pk=$('#pk'),sc=$('#sc'),rest=$('#rest');let st,rb,list=[],pairs=[];
+ const SO=stands(),RO=rbs();
+ if(op==='new'){const add=first=>{const d=document.createElement('div');d.className=first?'':'card';let a,b;a=picker('ST',()=>b.get()?stsFor(b.get()):SO);b=picker('RB',()=>a.get()?rbsFor(a.get()):RO);d.append(a,b);pk.append(d);pairs.push([a,b])};add(1);
+  pk.insertAdjacentHTML('afterend','<button type=button class="big alt" id=ad>+ مشترك مع موضع آخر (ST / RB)</button>');$('#ad').onclick=()=>add(0);
+  rest.innerHTML=`<p class=hint>سجّل كود الفردتين بدقة</p>`+inp('كود الفردة الأولى','c1')+inp('كود الفردة الثانية','c2')}
+ else{const LV=blocks.filter(b=>b.sets.length);rb=picker('RB',()=>st.get()?rbsFor(st.get(),LV):rbs(LV));st=picker('ST',()=>rb.get()?stsFor(rb.get(),LV):stands(LV));
+  const refresh=()=>{const a=st.get(),b=rb.get(),f=$('#rl');if(f)f.innerHTML='';list=a&&b?setsOf(a,b):[];if(a&&b)setCards(sc,list,()=>{if(f){const s=pickedSet(list);f.innerHTML=s?radios('كود الفردة التي تعمل عليها','roll',[s.a,s.b].filter(Boolean)):''}});else sc.innerHTML=''};
+  if(op==='helix'){pk.append(rb,st);rb.onchange=()=>{st.set(rb.get()?lastSt(rb.get(),LV):'');refresh()};st.onchange=refresh}else{pk.append(st,rb);st.onchange=rb.onchange=refresh}
+  const se='<div id=rl></div>';
+  rest.innerHTML=op==='turn'?se+inp('القطر البدائي','d0','n')+radios('الحالة','fin',['انتهى','لم ينتهِ'])+'<div id=fx></div>'+inp('ملاحظات','nt')
+  :op==='helix'?se+inp('القطر البدائي','d0','n')+'<b>NOTCH</b>'+inp('HS','hs','n')+inp('CS','cs','n')+inp('BETA ANGLE','beta','n')+inp('Z','z','n')+'<b>LOGO</b>'+inp('LOGO DEPTH','logo','n')+inp('ملاحظات','nt')
+  :radios('سبب الإتلاف','why',['انتهاء القطر','شيء آخر'])+'<div id=fx></div>';
+  rest.onchange=()=>{rest.querySelectorAll('.opt').forEach(o=>o.classList.toggle('on',o.querySelector('input').checked));const f=$('#fx');if(!f)return;const v=val(op==='turn'?'fin':'why');f.innerHTML=v==='انتهى'?inp('القطر النهائي','d1','n'):v==='انتهاء القطر'?inp('القطر','d1','n'):v==='شيء آخر'?inp('اذكر السبب','why2'):''}}
+ $('#fm').onsubmit=async e=>{e.preventDefault();const p={type:op,shift:S.shift,eng:S.eng.trim()};const bad=m=>{alert(m);return 1};
+  if(op==='new'){p.pos=[];for(const[a,b]of pairs){if(!a.get()||!b.get())return bad('اختر ST و RB بالضغط على أحد الاقتراحات');p.pos.push(b.get()+':'+a.get())}
+   p.c1=val('c1');p.c2=val('c2');if(!p.c1||!p.c2)return bad('أدخل كود الفردتين')}
+  else{p.st=st.get();p.rb=rb.get();if(!p.st||!p.rb)return bad('اختر ST و RB بالضغط على أحد الاقتراحات');const s=pickedSet(list);if(!s)return bad('اختر الطقم');p.c1=s.a;p.c2=s.b;
+   if(op!=='scrap'){p.roll=val('roll');p.d0=val('d0');if(!p.roll)return bad('اختر كود الفردة التي تعمل عليها');if(!p.d0)return bad('أدخل القطر البدائي');p.nt=val('nt')}
+   if(op==='turn'){p.fin=val('fin');if(!p.fin)return bad('اختر انتهى أو لم ينتهِ');p.d1=p.fin==='انتهى'?val('d1'):'لم ينتهِ';if(!p.d1)return bad('أدخل القطر النهائي')}
+   if(op==='helix'){for(const k of['hs','cs','beta','z','logo']){p[k]=val(k);if(!p[k])return bad('أكمل كل حقول NOTCH و LOGO')}}
+   if(op==='scrap'){p.why=val('why');if(!p.why)return bad('اختر سبب الإتلاف');p.d1=p.why==='انتهاء القطر'?val('d1'):val('why2');if(!p.d1)return bad(p.why==='انتهاء القطر'?'أدخل القطر':'اذكر السبب')}}
+  await send(p);app.innerHTML=`<div class="card ok"><h1>✅ تم الإرسال</h1><button class=big id=h>رجوع للرئيسية</button></div>`;$('#h').onclick=home}}
+// ---- الإرسال ----
+const chk=async()=>{try{return !(await(await fetch(ENDPOINT+'?key='+encodeURIComponent(KEY))).json()).error}catch(e){return null}};
+function askKey(bad){app.innerHTML=`<h1>تسجيل الدرافيل</h1><div class=card><div class=f><label>رمز الدخول (يعطيك إياه المسؤول)</label><input type=text id=kk autocomplete=off></div>${bad?'<p class=bad>الرمز غير صحيح</p>':''}<button class=big id=kb>دخول</button></div>`;
+ $('#kb').onclick=async()=>{KEY=$('#kk').value.trim();L.set('key',KEY);if(await chk()===false)return askKey(1);home();flush();sync()}}
+async function flush(){if(!ENDPOINT)return;const q=L.get('q',[]);if(!q.length)return;const ok=await chk();if(ok===false)return askKey(KEY?1:0);if(ok===null)return;const left=[];
+ for(const p of q){try{await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({...p,key:KEY})})}catch(e){left.push(p)}}L.set('q',left)}
+async function send(p){if(!ENDPOINT)alert('لم يُضبط رابط الإرسال بعد (ENDPOINT)');const q=L.get('q',[]);q.push(p);L.set('q',q);await flush()}
+async function sync(){if(!ENDPOINT)return;try{const r=await(await fetch(ENDPOINT+'?key='+encodeURIComponent(KEY))).json();if(r.error)return askKey(KEY?1:0);(r.scrap||[]).forEach(c=>scrap.add(norm(c)));
+ (r.newSets||[]).forEach(n=>n.pos.forEach(([rb,st])=>{let b=blocks.find(x=>x.rb===rb&&x.st===st);if(!b)blocks.push(b={rb,st,sets:[]});if(b.sets.some(s=>norm(s.a)===norm(n.a)&&norm(s.b)===norm(n.b)))return;b.sets.push({n:'جديد',a:n.a,b:n.b,d:'',c:'طقم جديد'})}))}catch(e){}}
+home();flush();sync();
+</script></body></html>
